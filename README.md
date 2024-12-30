@@ -68,7 +68,7 @@ Welcome to **MySQL Practice Repository**, a comprehensive collection of SQL exer
 ## **How to Use**
 1. Clone the repository:
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/CodeWithCharan/MySQL-Practice.git
    ```
 2. Navigate to the desired folder based on your topic of interest.
 3. Use the `.sql` or `.txt` files to practice queries in your MySQL environment.
