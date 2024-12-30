@@ -1,0 +1,120 @@
+The SQL CASE Expression
+The CASE expression goes through conditions and returns a value when the first condition is met (like an if-then-else statement). So, once a condition is true, it will stop reading and return the result. If no conditions are true, it returns the value in the ELSE clause.
+
+If there is no ELSE part and no conditions are true, it returns NULL.
+
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END;
+
+
+Beginner Level problems:
+
+1. Write a query to classify students as "Pass" or "Fail" based on their scores. If the score is 50 or above, classify as "Pass"; otherwise, "Fail".
+Example Table:
++--------+-------+
+| Name   | Score |
++--------+-------+
+| Alice  | 45    |
+| Bob    | 78    |
+| Carol  | 65    |
+| Dave   | 30    |
++--------+-------+
+
+Query:
+
+SELECT Name, Score,
+    CASE
+        WHEN Score >= 50 THEN "Pass"
+        ELSE "Fail"
+    END AS Status
+FROM Students;
+
+
+2. Classify employees into salary ranges: "Low" (below 3000), "Medium" (3000-7000), and "High" (above 7000).
+Example Table:
++--------+--------+
+| Name   | Salary |
++--------+--------+
+| John   | 2500   |
+| Sarah  | 5000   |
+| Mike   | 8000   |
++--------+--------+
+
+Query:
+
+SELECT Name, Salary,
+    CASE
+        WHEN Salary >= 3000 AND Salary <= 7000 THEN "Medium"
+        WHEN Salary > 7000 THEN "High"
+        ELSE "Low"
+        
+    END AS Category
+FROM Employees;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Intermediate Level
+
+Assign grades based on the following criteria:
+- 90 or above: "A"
+- 80-89: "B"
+- 70-79: "C"
+- Below 70: "D"
+
+Example Table:
+
++--------+-------+
+| Name   | Score |
++--------+-------+
+| Alice  | 95    |
+| Bob    | 83    |
+| Carol  | 72    |
+| Dave   | 60    |
++--------+-------+
+
+Query:
+
+SELECT Name, Score,
+    CASE
+        WHEN Score >= 90 THEN "A"
+        WHEN Score >= 80 AND Score <= 89 THEN "B"
+        WHEN Score >= 70 AND Score <= 79 THEN "C"
+        ELSE "D"
+        
+    END AS Grade
+FROM Grades;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Advanced Level
+
+Create labels for employees based on both salary and department:
+
+- "High Earner - IT" if salary > 7000 and department = "IT".
+- "High Earner - Non-IT" if salary > 7000 and department != "IT".
+- "Regular Earner" otherwise.
+
+Example Table:
+
++--------+--------+-------------+
+| Name   | Salary | Department  |
++--------+--------+-------------+
+| Alice  | 9000   | IT          |
+| Bob    | 8000   | HR          |
+| Carol  | 5000   | IT          |
++--------+--------+-------------+
+
+Query:
+
+SELECT Name, Salary, Department,
+    CASE
+        WHEN Salary > 7000 AND Department = "IT" THEN "High Earner - IT"
+        WHEN Salary > 7000 AND Department != "IT" THEN "High Earner - Non-IT"
+        ELSE "Regular Earner"
+        
+    END AS Label
+FROM EmployeeDetails;

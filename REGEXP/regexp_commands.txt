@@ -1,0 +1,19 @@
+1. Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates.
+
+SELECT DISTINCT CITY FROM STATION
+WHERE CITY REGEXP '^[aeiouAEIOU]'
+
+2. Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION. Your result cannot contain duplicates.
+
+SELECT DISTINCT CITY FROM STATION
+WHERE CITY REGEXP '[aeiouAEIOU]$'
+
+3. Query the list of CITY names not starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates.
+
+SELECT DISTINCT CITY FROM STATION
+WHERE CITY REGEXP '^[^aeiouAEIOU]'
+
+4. Query the list of CITY names not ending with vowels (a, e, i, o, u) from STATION. Your result cannot contain duplicates.
+
+SELECT DISTINCT CITY FROM STATION
+WHERE CITY REGEXP '[^aeiouAEIOU]$'

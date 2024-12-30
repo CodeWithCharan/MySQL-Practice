@@ -1,0 +1,94 @@
++-----------+------------+
+| Name      | Occupation |
++-----------+------------+
+| Ashley    | Professor  |
+| Christeen | Professor  |
+| Jane      | Actor      |
+| Jenny     | Doctor     |
+| Julia     | Actor      |
+| Ketty     | Professor  |
+| Maria     | Actor      |
+| Meera     | Singer     |
+| Priya     | Singer     |
+| Samantha  | Doctor     |
++-----------+------------+
+
+1. Extract and Format Data: Write a query to display the names in the format: <Name>(<FirstLetterOfOccupation>), sorted alphabetically by Name.
+
+Query:
+select CONCAT(Name, "(", SUBSTRING(Occupation, 1, 1), ")") as result from OCCUPATIONS
+order by Name;
+
+Output:
+
++--------------+
+| result       |
++--------------+
+| Ashley(P)    |
+| Christeen(P) |
+| Jane(A)      |
+| Jenny(D)     |
+| Julia(A)     |
+| Ketty(P)     |
+| Maria(A)     |
+| Meera(S)     |
+| Priya(S)     |
+| Samantha(D)  |
++--------------+
+
+2. Aggregate and Count: Write a query to display the total number of each occupation. Sort the result by Count in ascending order. If two occupations have the same count, sort them alphabetically by Occupation.
+
+Query:
+select Occupation, count(Occupation) as COUNTS from OCCUPATIONS
+group by Occupation
+order by COUNTS ASC, Occupation ASC
+
+Output:
+
++------------+--------+
+| Occupation | COUNTS |
++------------+--------+
+| Doctor     |      2 |
+| Singer     |      2 |
+| Actor      |      3 |
+| Professor  |      3 |
++------------+--------+
+
+3. Combining and Formatting: Write a query to display:
+
+- A formatted list of all names with their occupations' first letters (as in exercise 2).
+- A statement showing the total number of each occupation in the format:
+
+There are a total of [Count] [Occupation]s.
+
+Use a UNION ALL to combine both results into a single output.
+
+Query:
+select concat(Name, "(", SUBSTRING(Occupation, 1, 1), ")") as result from OCCUPATIONS
+
+UNION ALL
+
+select concat("There are a total of ", Count(Occupation), " ", lower(Occupation), "s.") as result from OCCUPATIONS
+group by Occupation
+order by result ASC
+
+Output:
+
++------------------------------------+
+| result                             |
++------------------------------------+
+| Ashley(P)                          |
+| Christeen(P)                       |
+| Jane(A)                            |
+| Jenny(D)                           |
+| Julia(A)                           |
+| Ketty(P)                           |
+| Maria(A)                           |
+| Meera(S)                           |
+| Priya(S)                           |
+| Samantha(D)                        |
+| There are a total of 2 doctor's    |
+| There are a total of 2 singer's    |
+| There are a total of 3 actor's     |
+| There are a total of 3 professor's |
++------------------------------------+
