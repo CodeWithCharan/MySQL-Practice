@@ -1,6 +1,6 @@
 # **MySQL Practice Repository**
 
-Welcome to **MySQL Practice Repository**, a comprehensive collection of SQL exercises, commands, and case studies to help me master MySQL.
+Welcome to **MySQL Practice Repository**, a comprehensive collection of SQL exercises, commands, and case studies that helped me master MySQL.
 
 ## **Repository Structure**
 
